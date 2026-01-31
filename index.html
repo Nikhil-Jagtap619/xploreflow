@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Xploreflow | From Ordinary to Extraordinary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #292826; /* Charcoal Onyx */
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        #canvas {
+            position: fixed;
+            top: 0; left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Fixed heading to prevent "y" cropping */
+        .responsive-h1 {
+            font-size: clamp(2.8rem, 9vw, 7.5rem);
+            line-height: 1.2; 
+            padding-bottom: 0.2em; 
+        }
+
+        .gradient-flow {
+            background: linear-gradient(135deg, #8000FF 0%, #DE00FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            filter: drop-shadow(0 0 15px rgba(222, 0, 255, 0.3));
+            animation: flowBrightness 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes flowBrightness {
+            from { filter: drop-shadow(0 0 10px rgba(128, 0, 255, 0.2)); }
+            to { filter: drop-shadow(0 0 25px rgba(222, 0, 255, 0.6)); }
+        }
+
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(230, 231, 232, 0.2);
+        }
+
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(128, 0, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-btn {
+            background: linear-gradient(135deg, #8000FF, #DE00FF);
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .brand-btn:hover {
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(128, 0, 255, 0.3);
+        }
+
+        .social-box {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(8px);
+        }
+
+        .group:hover .social-box {
+            transform: translateY(-5px);
+            border-color: #8000FF;
+            background: rgba(128, 0, 255, 0.1);
+        }
+
+        .pulse-dot {
+            width: 6px; height: 6px;
+            background: #DE00FF;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 12px #DE00FF; }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <canvas id="canvas"></canvas>
+
+    <div class="relative z-10 min-h-screen flex flex-col">
+        <nav class="p-6 md:p-10 max-w-7xl mx-auto w-full flex justify-between items-center" data-aos="fade-down">
+            <img src="logo.png" alt="Xploreflow" class="h-8 md:h-12 w-auto object-contain">
+            <div class="flex items-center gap-3">
+                <span class="hidden sm:block text-[10px] uppercase tracking-[0.4em] text-[#E6E7E8]/40 font-bold">Agentic AI</span>
+                <div class="pulse-dot"></div>
+            </div>
+        </nav>
+
+        <main class="flex-1 flex flex-col items-center justify-center text-center px-6 py-12">
+            <div data-aos="zoom-in" data-aos-delay="200" class="mb-8 glass-pill px-5 py-2 flex items-center gap-3">
+                <span class="text-[10px] md:text-xs font-bold tracking-widest uppercase text-[#E6E7E8]">Xploreflow is Evolving</span>
+            </div>
+
+            <h1 class="responsive-h1 font-extrabold tracking-tighter mb-4 leading-none" data-aos="fade-up" data-aos-delay="400">
+                Automating the <span class="text-outline">Ordinary</span><br>
+                <span class="gradient-flow">Extraordinary</span>
+            </h1>
+
+            <p class="max-w-xl text-[#E6E7E8]/60 text-lg md:text-xl mb-12 font-light leading-relaxed" data-aos="fade-up" data-aos-delay="600">
+                Engineering intelligent agents that transform manual chaos into seamless automated excellence.
+            </p>
+
+            <div class="w-full max-w-md px-2" data-aos="fade-up" data-aos-delay="800">
+                <form id="waitlistForm" class="flex flex-col sm:flex-row p-1.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-3xl gap-2">
+                    <input type="email" required placeholder="Enter your email" class="flex-1 bg-transparent px-5 py-4 outline-none text-white placeholder:text-gray-500 text-sm md:text-base">
+                    <button type="submit" class="brand-btn px-8 py-4 rounded-xl font-bold text-sm md:text-base whitespace-nowrap">
+                        Join Waitlist
+                    </button>
+                </form>
+            </div>
+
+            <div class="mt-14 flex flex-wrap items-center justify-center gap-6 md:gap-10" data-aos="fade-up" data-aos-delay="1000">
+                <a href="https://www.linkedin.com/company/xploreflow/" target="_blank" class="group flex flex-col items-center gap-2">
+                    <div class="social-box"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></div>
+                    <span class="text-[9px] uppercase tracking-widest text-[#E6E7E8]/30 group-hover:text-white">LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/xploreflow/" target="_blank" class="group flex flex-col items-center gap-2">
+                    <div class="social-box"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+                    <span class="text-[9px] uppercase tracking-widest text-[#E6E7E8]/30 group-hover:text-white">Instagram</span>
+                </a>
+                <a href="https://x.com/" target="_blank" class="group flex flex-col items-center gap-2">
+                    <div class="social-box"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+                    <span class="text-[9px] uppercase tracking-widest text-[#E6E7E8]/30 group-hover:text-white">X</span>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" class="group flex flex-col items-center gap-2">
+                    <div class="social-box"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                    <span class="text-[9px] uppercase tracking-widest text-[#E6E7E8]/30 group-hover:text-white">Facebook</span>
+                </a>
+            </div>
+        </main>
+
+        <footer class="p-10 text-center" data-aos="fade-up" data-aos-delay="1200">
+            <p class="text-[9px] uppercase tracking-[0.4em] text-[#E6E7E8]/20">© 2026 XploreFlow | Engineered for Excellence</p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Particle System Logic
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 170 };
+
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() * 2 - 1) * 2; // Fast speed
+                this.speedY = (Math.random() * 2 - 1) * 2;
+                this.color = 'rgba(230, 231, 232, 0.2)';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < mouse.radius) {
+                    this.color = '#DE00FF'; // Shine Magenta
+                    this.size = 2.5;
+                } else {
+                    this.color = 'rgba(230, 231, 232, 0.2)';
+                    this.size = 1.2;
+                }
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            let count = window.innerWidth < 768 ? 40 : 100;
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+
+        function connect() {
+            let maxDist = 150;
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < maxDist) {
+                        let opacity = 1 - (dist / maxDist);
+                        let mdx = mouse.x - particles[a].x;
+                        let mdy = mouse.y - particles[a].y;
+                        let mDist = Math.sqrt(mdx*mdx + mdy*mdy);
+                        ctx.strokeStyle = mDist < mouse.radius ? `rgba(222, 0, 255, ${opacity * 0.4})` : `rgba(128, 0, 255, ${opacity * 0.15})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connect();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize(); animate();
+
+        // Form Redirect Logic
+        document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            window.location.href = 'success.html';
+        });
+    </script>
+</body>
+</html>
